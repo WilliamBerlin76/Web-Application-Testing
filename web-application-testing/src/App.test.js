@@ -1,9 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { render } from '@testing-library/react'
+import App, { addStrike, addBall, addFoul } from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+test('renders without crashing', () => {
+  render(<App />)
 });
+
+test('addStrike adds one strike to the current strike count, and sets strike to 0 at 3rd strike', () => {
+  expect(addStrike(2)).toBe(0)
+})
+
+test('at bat section is found', () => {
+  const { getByText } = render(<App/>);
+
+  getByText(/at bat/i)
+})

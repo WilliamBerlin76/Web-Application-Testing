@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import './App.css';
 
+export const addStrike = currentStrike => {
+  if (currentStrike < 2){
+    currentStrike += 1
+  } else {
+    currentStrike = 0
+  }
+  return currentStrike
+};
+
+export const addBall = currentBall => {
+  return currentBall + 1
+};
+
+export const addFoul = currentStrike => {
+  return currentStrike + 1
+};
+
 function App() {
   const [strike, setStrike] = useState(0);
   const [ball, setBall] = useState(0);
   
   const onStrike = e => {
     if (strike < 2) {
-      setStrike(strike + 1)
+      setStrike(addStrike(strike))
      } else {
        setStrike(0);
        setBall(0);
@@ -15,14 +32,14 @@ function App() {
   };
   const onBall = e => {
     if (ball < 3) {
-      setBall(ball + 1)
+      setBall(addBall(ball))
     } else {
       setBall(0);
       setStrike(0);
     }
   };
   const onFoul = e => {
-    strike < 2 ? setStrike(strike + 1) : setStrike(strike)
+    strike < 2 ? setStrike(addFoul(strike)) : setStrike(strike)
   };
   const onHit = e => {
     setStrike(0);
