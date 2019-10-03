@@ -1,32 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-
-  const onStrike = () => {
-
+  const [strike, setStrike] = useState(0);
+  const [ball, setBall] = useState(0);
+  
+  const onStrike = e => {
+    if (strike < 2) {
+      setStrike(strike + 1)
+     } else {
+       setStrike(0);
+       setBall(0);
+      }
   };
-  const onBall = () => {
-
+  const onBall = e => {
+    if (ball < 3) {
+      setBall(ball + 1)
+    } else {
+      setBall(0);
+      setStrike(0);
+    }
   };
-  const onFowl = () => {
-
+  const onFoul = e => {
+    strike < 2 ? setStrike(strike + 1) : setStrike(strike)
   };
+  const onHit = e => {
+    setStrike(0);
+    setBall(0);
+  };
+
   return (
     <div className="App">
       <h1>Baseball Scoreboard</h1>
 
       <div className='at-bat'>
         <h2>At Bat</h2>
-        <p>Strikes:</p>
-        <p>Balls:</p>
+        <p>Strikes: {strike}</p>
+        <p>Balls: {ball}</p>
       </div>
 
       <div className='button-container'>
-        <button>Strike</button>
-        <button>Ball</button>
-        <button>Foul</button>
+        <button onClick={onStrike}>Strike</button>
+        <button onClick={onBall}>Ball</button>
+        <button onClick={onFoul}>Foul</button>
+        <button onClick={onHit}>Hit</button>
       </div>
     </div>
   );
