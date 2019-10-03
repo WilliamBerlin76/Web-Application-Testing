@@ -3,22 +3,31 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const onStrike = () => {
+
+  };
+  const onBall = () => {
+
+  };
+  const onFowl = () => {
+
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Baseball Scoreboard</h1>
+
+      <div className='at-bat'>
+        <h2>At Bat</h2>
+        <p>Strikes:</p>
+        <p>Balls:</p>
+      </div>
+
+      <div className='button-container'>
+        <button>Strike</button>
+        <button>Ball</button>
+        <button>Foul</button>
+      </div>
     </div>
   );
 }
